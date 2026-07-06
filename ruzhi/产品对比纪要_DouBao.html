@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>智服通AI客服中台 · 功能对比报告</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"DM Sans"', '-apple-system', '"Segoe UI"', '"PingFang SC"', '"Microsoft YaHei"', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+        colors: {
+          bg:           'hsl(222 30% 6%)',
+          'bg-alt':     'hsl(222 28% 9%)',
+          surface:      'hsl(222 25% 12%)',
+          'surface-hover': 'hsl(222 24% 16%)',
+          border:       'hsl(222 20% 18%)',
+          'border-light': 'hsl(222 18% 24%)',
+          text:         'hsl(220 20% 92%)',
+          'text-secondary': 'hsl(220 14% 64%)',
+          'text-muted': 'hsl(220 10% 44%)',
+          green:        'hsl(152 72% 52%)',
+          'green-bg':   'hsl(152 72% 52% / 0.08)',
+          'green-border':'hsl(152 72% 52% / 0.18)',
+          amber:        'hsl(38 92% 58%)',
+          'amber-bg':   'hsl(38 92% 58% / 0.08)',
+          'amber-border':'hsl(38 92% 58% / 0.18)',
+          red:          'hsl(4 78% 58%)',
+          'red-bg':     'hsl(4 78% 58% / 0.08)',
+          'red-border': 'hsl(4 78% 58% / 0.18)',
+          blue:         'hsl(210 100% 62%)',
+          'blue-bg':    'hsl(210 100% 62% / 0.08)',
+          purple:       'hsl(262 72% 62%)',
+        }
+      }
+    }
+  };
+</script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  img, video { max-width: 100%; height: auto; display: block; }
+  body { overflow-wrap: break-word; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.5; transform: scale(0.85); }
+  }
+  @keyframes gradient-shift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animate-in {
+    animation: fadeInUp 0.6s ease-out both;
+  }
+  .stagger-1 { animation-delay: 0.05s; }
+  .stagger-2 { animation-delay: 0.1s; }
+  .stagger-3 { animation-delay: 0.15s; }
+  .stagger-4 { animation-delay: 0.2s; }
+  .stagger-5 { animation-delay: 0.25s; }
+  .stagger-6 { animation-delay: 0.3s; }
+
+  .hero-gradient {
+    background: radial-gradient(ellipse 80% 60% at 50% -10%, hsl(210 100% 62% / 0.12), transparent 70%),
+                radial-gradient(ellipse 60% 50% at 80% 80%, hsl(262 72% 62% / 0.08), transparent 70%);
+  }
+
+  .stat-ring {
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-glow-green:hover  { box-shadow: 0 0 40px -8px hsl(152 72% 52% / 0.12); }
+  .card-glow-amber:hover  { box-shadow: 0 0 40px -8px hsl(38 92% 58% / 0.12); }
+  .card-glow-red:hover    { box-shadow: 0 0 40px -8px hsl(4 78% 58% / 0.12); }
+
+  .divider-dot {
+    background-image: radial-gradient(circle, hsl(222 20% 18%) 1px, transparent 1px);
+    background-size: 6px 6px;
+  }
+
+  .tag-p0 { background: hsl(210 100% 62% / 0.12); color: hsl(210 100% 72%); }
+  .tag-p1 { background: hsl(262 72% 62% / 0.12); color: hsl(262 72% 72%); }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: hsl(222 20% 22%); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(222 20% 30%); }
+
+  .feature-item {
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .feature-item:hover {
+    background: hsl(222 24% 16%);
+  }
+</style>
+</head>
+<body class="bg-bg text-text font-sans antialiased">
+
+<!-- Hero -->
+<header class="hero-gradient border-b border-border">
+  <div class="max-w-6xl mx-auto px-6 py-12 md:py-16">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div class="animate-in stagger-1">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-lg bg-blue flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="hsl(222 30% 6%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              <path d="M8 9h8"/><path d="M8 13h6"/>
+            </svg>
+          </div>
+          <span class="text-text-muted text-sm font-medium tracking-wider uppercase">Product Analysis</span>
+        </div>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
+          智服通AI客服中台
+        </h1>
+        <p class="text-text-secondary text-lg mt-2 max-w-xl leading-relaxed">
+          功能对比报告 &mdash; 基于产品介绍与需求文档的差距分析
+        </p>
+      </div>
+      <div class="animate-in stagger-2 flex items-center gap-4 text-sm text-text-muted">
+        <div class="flex items-center gap-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>2026-07-04</span>
+        </div>
+        <div class="w-px h-4 bg-border"></div>
+        <div class="flex items-center gap-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>自动对比生成</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Stats Overview -->
+<section class="max-w-6xl mx-auto px-6 -mt-8 relative z-10">
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <!-- 已实现 -->
+    <div class="animate-in stagger-1 bg-surface border border-green-border rounded-2xl p-5 card-glow-green transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-text-muted text-sm font-medium">已实现功能</span>
+        <div class="w-8 h-8 rounded-full bg-green-bg flex items-center justify-center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(152 72% 52%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <div class="flex items-baseline gap-2">
+        <span class="text-4xl font-bold text-green font-mono">8</span>
+        <span class="text-text-muted text-sm">项</span>
+      </div>
+      <div class="mt-2 h-1.5 rounded-full bg-border overflow-hidden">
+        <div class="h-full rounded-full bg-green" style="width:38%"></div>
+      </div>
+      <p class="text-text-muted text-xs mt-2">占总需求 38%</p>
+    </div>
+
+    <!-- 未实现 -->
+    <div class="animate-in stagger-2 bg-surface border border-amber-border rounded-2xl p-5 card-glow-amber transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-text-muted text-sm font-medium">未实现功能</span>
+        <div class="w-8 h-8 rounded-full bg-amber-bg flex items-center justify-center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(38 92% 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+      </div>
+      <div class="flex items-baseline gap-2">
+        <span class="text-4xl font-bold text-amber font-mono">10</span>
+        <span class="text-text-muted text-sm">项</span>
+      </div>
+      <div class="mt-2 h-1.5 rounded-full bg-border overflow-hidden">
+        <div class="h-full rounded-full bg-amber" style="width:48%"></div>
+      </div>
+      <p class="text-text-muted text-xs mt-2">占总需求 48%</p>
+    </div>
+
+    <!-- 需求不符 -->
+    <div class="animate-in stagger-3 bg-surface border border-red-border rounded-2xl p-5 card-glow-red transition-shadow">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-text-muted text-sm font-medium">需求不符项</span>
+        <div class="w-8 h-8 rounded-full bg-red-bg flex items-center justify-center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(4 78% 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+      </div>
+      <div class="flex items-baseline gap-2">
+        <span class="text-4xl font-bold text-red font-mono">3</span>
+        <span class="text-text-muted text-sm">项</span>
+      </div>
+      <div class="mt-2 h-1.5 rounded-full bg-border overflow-hidden">
+        <div class="h-full rounded-full bg-red" style="width:14%"></div>
+      </div>
+      <p class="text-text-muted text-xs mt-2">占总需求 14%</p>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content: Three Columns -->
+<main class="max-w-6xl mx-auto px-6 py-12">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- Column 1: 已实现 -->
+    <section class="animate-in stagger-4">
+      <div class="flex items-center gap-2 mb-5">
+        <div class="w-2.5 h-2.5 rounded-full bg-green" style="animation: pulse-dot 2s ease-in-out infinite;"></div>
+        <h2 class="text-lg font-semibold tracking-tight">已实现核心功能</h2>
+        <span class="text-text-muted text-sm font-mono ml-auto">8 项</span>
+      </div>
+      <div class="space-y-3">
+        <!-- Item 1 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-green-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(152 72% 52%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <h3 class="font-medium text-sm text-text">多模态输入解析</h3>
+                <span class="tag-p0 text-[11px] font-semibold px-1.5 py-0.5 rounded">P0</span>
+              </div>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">支持文本、语音、图像输入，具备ASR语音转写与OCR图片识别能力</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-green-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(152 72% 52%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <h3 class="font-medium text-sm text-text">上下文记忆</h3>
+                <span class="tag-p0 text-[11px] font-semibold px-1.5 py-0.5 rounded">P0</span>
+              </div>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">单会话支持12轮对话连贯性</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-green-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(152 72% 52%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <h3 class="font-medium text-sm text-text">意图识别与任务拆解</h3>
+                <span class="tag-p0 text-[11px] font-semibold px-1.5 py-0.5 rounded">P0</span>
+              </div>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">准确判断用户诉求并拆解为原子任务</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-green-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(152 72% 52%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <h3 class="font-medium text-sm text-text">跨系统API调用</h3>
+                <span class="tag-p1 text-[11px] font-semibold px-1.5 py-0.5 rounded">P1</span>
+              </div>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">安全对接内部系统，HTTPS加密传输</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-green-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(152 72% 52%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <h3 class="font-medium text-sm text-text">自然语言生成</h3>
+                <span class="tag-p0 text-[11px] font-semibold px-1.5 py-0.5 rounded">P0</span>
+              </div>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">转化结构化结果为品牌化自然语言响应</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-green-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(152 72% 52%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">核心性能达标</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">P99响应延迟≤1.4秒，支持1000+并发会话，可服务50万用户规模</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 7 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-green-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(152 72% 52%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">安全合规保障</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">RBAC权限控制、PII脱敏、等保二级合规、180天+操作日志审计</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 8 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-green-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(152 72% 52%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">5类核心场景</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">订单查询、退款跟踪、地址修改、账户核验、多轮咨询</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Column 2: 未实现 -->
+    <section class="animate-in stagger-5">
+      <div class="flex items-center gap-2 mb-5">
+        <div class="w-2.5 h-2.5 rounded-full bg-amber" style="animation: pulse-dot 2s ease-in-out 0.3s infinite;"></div>
+        <h2 class="text-lg font-semibold tracking-tight">未实现功能</h2>
+        <span class="text-text-muted text-sm font-mono ml-auto">10 项</span>
+      </div>
+      <div class="space-y-3">
+        <!-- Item 1 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-amber-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(38 92% 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">多语言完整支持</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">仅提及中英翻译，需支持中、英、日、韩四语言</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-amber-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(38 92% 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">人工兜底机制</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">置信度&lt;70%自动转人工、用户错误反馈入口</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-amber-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(38 92% 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">零代码可视化配置</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">运营无需开发即可编排业务场景</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-amber-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(38 92% 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">平台兼容性</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">多系统/浏览器适配、RN与Flutter移动端SDK</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-amber-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(38 92% 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">模型量化指标</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">意图分类准确率≥92%、幻觉率≤0.8%、推理速度≥80 tokens/秒</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-amber-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(38 92% 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">异常降级机制</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">API超时重试、空检索重试、弱网容错</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 7 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-amber-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(38 92% 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">业务量化目标</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">6个月内人工介入率≤20%、首次响应时长缩短40%</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 8 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-amber-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(38 92% 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">模型监控优化</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">数据漂移检测、反馈再训练、迭代机制</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 9 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-amber-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(38 92% 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">数据合规管理</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">数据不出境、境内云存储、标注Kappa系数≥0.8</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 10 -->
+        <div class="feature-item bg-surface border border-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-amber-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(38 92% 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">WebSocket长连接</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">实时语音流与增量文本返回，适配电话客服</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Column 3: 需求不符 -->
+    <section class="animate-in stagger-6">
+      <div class="flex items-center gap-2 mb-5">
+        <div class="w-2.5 h-2.5 rounded-full bg-red" style="animation: pulse-dot 2s ease-in-out 0.6s infinite;"></div>
+        <h2 class="text-lg font-semibold tracking-tight">需求不符项</h2>
+        <span class="text-text-muted text-sm font-mono ml-auto">3 项</span>
+      </div>
+      <div class="space-y-3">
+        <!-- Item 1 -->
+        <div class="feature-item bg-surface border border-red-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-red-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(4 78% 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">上下文窗口规格冲突</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">PPT标注128K上下文窗口，但PRD要求12轮对话约16K tokens</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="feature-item bg-surface border border-red-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-red-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(4 78% 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">范围蔓延功能</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">PPT新增PRD未定义的「离线中英翻译」P1功能</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="feature-item bg-surface border border-red-border rounded-xl p-4">
+          <div class="flex items-start gap-3">
+            <div class="w-7 h-7 rounded-lg bg-red-bg flex-shrink-0 flex items-center justify-center mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(4 78% 58%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-medium text-sm text-text">命名不统一</h3>
+              <p class="text-text-muted text-xs mt-1 leading-relaxed">PPT同时使用「智服通AI客服中台」和「MindFlow AI」，易造成品牌混淆</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary Card -->
+      <div class="mt-6 bg-surface border border-border rounded-2xl p-5">
+        <h3 class="text-sm font-semibold text-text mb-3 flex items-center gap-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          报告摘要
+        </h3>
+        <p class="text-text-secondary text-xs leading-relaxed">
+          本次对比基于2026年7月4日生成的《ai产品介绍.pptx》与《ai产品需求文档.pdf》。共识别<strong class="text-green">8项已实现</strong>、<strong class="text-amber">10项未实现</strong>、<strong class="text-red">3项需求不符</strong>。核心P0功能覆盖较好，但在多语言、人工兜底、零代码配置、模型量化监控等方面存在明显差距，建议优先补齐。
+        </p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="border-t border-border">
+  <div class="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-text-muted">
+    <span>智服通AI客服中台 · 功能对比报告</span>
+    <span>自动对比生成 · 2026-07-04</span>
+  </div>
+</footer>
+
+</body>
+</html>

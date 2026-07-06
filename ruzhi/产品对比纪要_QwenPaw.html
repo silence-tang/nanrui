@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<!-- saved from url=(0156)file:///D:/edge_download/%E4%BA%A7%E5%93%81%E5%AF%B9%E6%AF%94%E7%BA%AA%E8%A6%81_%E6%99%BA%E6%9C%8D%E9%80%9AAI%E5%AE%A2%E6%9C%8D%E4%B8%AD%E5%8F%B0%20(1).html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>产品对比纪要 — 智服通AI客服中台</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    line-height: 1.6;
+    padding: 40px 20px;
+  }
+  .container { max-width: 1000px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #fff;
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  .header .subtitle { font-size: 15px; opacity: 0.85; }
+  .header .meta {
+    margin-top: 14px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    opacity: 0.7;
+  }
+  .header .meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* Summary Cards */
+  .summary-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .summary-card {
+    border-radius: 12px;
+    padding: 24px;
+    color: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .summary-card .num { font-size: 36px; font-weight: 700; line-height: 1.2; }
+  .summary-card .label { font-size: 14px; opacity: 0.9; margin-top: 4px; }
+  .card-green  { background: linear-gradient(135deg, #11998e, #38ef7d); }
+  .card-orange { background: linear-gradient(135deg, #f2994a, #f2c94a); }
+  .card-red    { background: linear-gradient(135deg, #eb3349, #f45c43); }
+
+  /* Section */
+  .section { background: #fff; border-radius: 12px; padding: 28px 32px; margin-bottom: 20px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
+  .section-title {
+    font-size: 18px; font-weight: 700; margin-bottom: 18px;
+    padding-bottom: 10px; border-bottom: 2px solid #e8e8e8;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-title .icon { font-size: 22px; }
+  .section-desc { font-size: 13px; color: #666; margin-bottom: 16px; }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    text-align: left; padding: 10px 12px;
+    background: #f7f8fa; font-weight: 600;
+    border-bottom: 2px solid #e0e0e0;
+  }
+  td { padding: 10px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+  tr:hover td { background: #f8f9ff; }
+
+  .status-badge {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    padding: 2px 10px; border-radius: 20px; white-space: nowrap;
+  }
+  .status-yes  { background: #d4edda; color: #155724; }
+  .status-no   { background: #f8d7da; color: #721c24; }
+  .status-warn { background: #fff3cd; color: #856404; }
+  .tag-green  { background: #11998e; }
+  .tag-orange { background: #e67e22; }
+  .tag-red    { background: #e74c3c; }
+  .tag-gray   { background: #95a5a6; }
+  .tag {
+    font-size: 11px; font-weight: 600; padding: 2px 10px;
+    border-radius: 20px; color: #fff; display: inline-block;
+  }
+
+  .question-mark { color: #e74c3c; font-weight: 700; }
+
+  .footer { text-align: center; font-size: 12px; color: #999; margin-top: 30px; padding-top: 16px; border-top: 1px solid #ddd; }
+
+  /* Notes */
+  .note-list { list-style: none; font-size: 13px; color: #444; }
+  .note-list li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+  .note-list li:last-child { border-bottom: none; }
+  .hl-green  { display:inline-block; background:#d4edda; color:#155724; padding:1px 8px; border-radius:10px; font-size:12px; font-weight:600; }
+  .hl-yellow { display:inline-block; background:#fff3cd; color:#856404; padding:1px 8px; border-radius:10px; font-size:12px; font-weight:600; }
+  .hl-gray   { display:inline-block; background:#e2e3e5; color:#383d41; padding:1px 8px; border-radius:10px; font-size:12px; font-weight:600; }
+
+  @media (max-width: 700px) {
+    .summary-row { grid-template-columns: 1fr; }
+    body { padding: 20px 12px; }
+    .header { padding: 24px 20px; }
+    .section { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ===== Header ===== -->
+  <div class="header">
+    <h1>📋 产品对比纪要</h1>
+    <div class="subtitle">产品介绍PPT vs 产品需求文档(PRD) — 功能实现合规性分析</div>
+    <div class="meta">
+      <span>📄 产品：智服通AI客服中台</span>
+      <span>📅 分析日期：2026年7月3日</span>
+      <span>📁 来源：产品介绍PPT + PRD文档</span>
+    </div>
+  </div>
+
+  <!-- ===== Summary ===== -->
+  <div class="summary-row">
+    <div class="summary-card card-green">
+      <div class="num">14</div>
+      <div class="label">✅ 已实现 — PPT覆盖PRD要求</div>
+    </div>
+    <div class="summary-card card-orange">
+      <div class="num">14</div>
+      <div class="label">⚠️ 未实现 — PPT未提及或遗漏</div>
+    </div>
+    <div class="summary-card card-red">
+      <div class="num">2</div>
+      <div class="label">❌ 不符合 — PPT与PRD存在偏差</div>
+    </div>
+  </div>
+
+  <!-- ===== 已实现 ===== -->
+  <div class="section">
+    <div class="section-title"><span class="icon">✅</span> 已实现功能（需求覆盖）</div>
+    <div class="section-desc">以下功能在 PRD 中有明确定义，PPT 已完整展示或在产品介绍中体现，需求覆盖度良好。</div>
+    <table>
+      <thead>
+        <tr><th style="width:28px">#</th><th style="width:84px">PRD编号</th><th style="width:170px">功能名称</th><th>对比结论</th><th style="width:76px">优先级</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td><td>F001</td><td><strong>多模态输入解析</strong></td>
+          <td>PPT"支持文本、语音、图像三种输入方式的自动识别与关键信息提取"与 PRD F001 完全吻合</td>
+          <td><span class="status-badge status-yes">P0 ✅</span></td>
+        </tr>
+        <tr>
+          <td>2</td><td>F002</td><td><strong>上下文关联与记忆</strong></td>
+          <td>PPT"单会话内支持最多12轮对话连贯性"与 PRD F002 记忆上限12轮一致</td>
+          <td><span class="status-badge status-yes">P0 ✅</span></td>
+        </tr>
+        <tr>
+          <td>3</td><td>F003</td><td><strong>意图识别与任务拆解</strong></td>
+          <td>PPT"准确判断用户诉求并分解为可执行的原子任务序列"与 PRD F003 吻合</td>
+          <td><span class="status-badge status-yes">P0 ✅</span></td>
+        </tr>
+        <tr>
+          <td>4</td><td>F004</td><td><strong>跨系统API调用</strong></td>
+          <td>PPT"安全对接订单、物流、账户等内部系统"与 PRD F004 一致</td>
+          <td><span class="status-badge status-yes">P1 ✅</span></td>
+        </tr>
+        <tr>
+          <td>5</td><td>F005</td><td><strong>自然语言生成与响应</strong></td>
+          <td>PPT"将结构化结果转化为符合品牌语调的自然语言响应"与 PRD F005 吻合</td>
+          <td><span class="status-badge status-yes">P0 ✅</span></td>
+        </tr>
+        <tr>
+          <td>6</td><td>—</td><td><strong>零代码可视化配置</strong></td>
+          <td>PPT"通过可视化界面实现零代码业务流程配置"，PRD 1.2 也要求可视化流程编排</td>
+          <td><span class="status-badge status-yes">✅</span></td>
+        </tr>
+        <tr>
+          <td>7</td><td>—</td><td><strong>5类典型服务场景</strong></td>
+          <td>PPT展示订单查询、退款跟踪、地址修改、账户核验、多轮咨询，满足 PRD 4.1 的5类场景要求</td>
+          <td><span class="status-badge status-yes">✅</span></td>
+        </tr>
+        <tr>
+          <td>8</td><td>—</td><td><strong>P99延迟 ≤1.4秒</strong></td>
+          <td>PPT"≤1.4秒响应延迟(P99)"与 PRD 3.1 的 P99≤1.4秒要求完全一致</td>
+          <td><span class="status-badge status-yes">⚡</span></td>
+        </tr>
+        <tr>
+          <td>9</td><td>—</td><td><strong>≥1000并发会话</strong></td>
+          <td>PPT"1000+个并发会话"与 PRD 3.1 的 ≥1000并发要求一致</td>
+          <td><span class="status-badge status-yes">⚡</span></td>
+        </tr>
+        <tr>
+          <td>10</td><td>—</td><td><strong>HTTPS + TLS 1.2+</strong></td>
+          <td>PPT"HTTPS+TLS 1.2+加密传输"与 PRD 3.2 要求一致</td>
+          <td><span class="status-badge status-yes">🔒</span></td>
+        </tr>
+        <tr>
+          <td>11</td><td>—</td><td><strong>RBAC权限控制</strong></td>
+          <td>PPT"基于角色的访问控制模型"与 PRD 3.2 的 RBAC 要求一致</td>
+          <td><span class="status-badge status-yes">🔒</span></td>
+        </tr>
+        <tr>
+          <td>12</td><td>—</td><td><strong>PII字段脱敏</strong></td>
+          <td>PPT"手机号、身份证号等PII自动脱敏（如138****1234）"与 PRD 3.2 一致</td>
+          <td><span class="status-badge status-yes">🔒</span></td>
+        </tr>
+        <tr>
+          <td>13</td><td>—</td><td><strong>操作日志审计180天</strong></td>
+          <td>PPT"日志留存不少于180天，支持全程追溯"与 PRD 3.2 一致</td>
+          <td><span class="status-badge status-yes">🔒</span></td>
+        </tr>
+        <tr>
+          <td>14</td><td>—</td><td><strong>等保二级 + GDPR合规</strong></td>
+          <td>PPT分别列出等保二级与GDPR第32条要求，与 PRD 3.5/3.3 的合规要求吻合</td>
+          <td><span class="status-badge status-yes">📜</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:12px; font-size:12px; color:#888; display:flex; gap:16px; flex-wrap:wrap;">
+      <span><span class="status-badge status-yes">P0 ✅</span> = 核心功能</span>
+      <span><span class="status-badge status-yes">⚡</span> = 性能指标</span>
+      <span><span class="status-badge status-yes">🔒</span> = 安全合规</span>
+    </div>
+  </div>
+
+  <!-- ===== 未实现 ===== -->
+  <div class="section">
+    <div class="section-title"><span class="icon">⚠️</span> 未实现功能（PPT未体现）</div>
+    <div class="section-desc">以下需求在 PRD 中有明确要求，但 PPT 中完全没有提及，属于产品介绍的遗漏项。</div>
+    <table>
+      <thead>
+        <tr><th style="width:28px">#</th><th style="width:100px">需求类别</th><th>具体内容</th><th style="width:70px">PRD出处</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td><td><strong>平台兼容性</strong></td>
+          <td>需支持 iOS 12+、Android 8.0+、Windows 10+、macOS 10.15+</td>
+          <td>3.1节</td>
+        </tr>
+        <tr>
+          <td>2</td><td><strong>浏览器兼容性</strong></td>
+          <td>需支持 Chrome 90+、Safari 14+、Firefox 85+、Edge 90+</td>
+          <td>3.1节</td>
+        </tr>
+        <tr>
+          <td>3</td><td><strong>移动端SDK</strong></td>
+          <td>需提供 React Native 与 Flutter 双版本移动端 SDK</td>
+          <td>3.1节</td>
+        </tr>
+        <tr>
+          <td>4</td><td><strong>网络适应性</strong></td>
+          <td>4G弱网环境（RTT ≥ 300ms）下核心功能仍可降级可用</td>
+          <td>3.1节</td>
+        </tr>
+        <tr>
+          <td>5</td><td><strong>数据管理规范</strong></td>
+          <td>≥50万条历史对话数据、标注一致性 Kappa ≥ 0.8、数据清洗与编码标准</td>
+          <td>3.3节</td>
+        </tr>
+        <tr>
+          <td>6</td><td><strong>模型性能指标</strong></td>
+          <td>一级意图分类准确率 ≥ 92%、召回率 ≥ 88%、推理速度 ≥ 80 tokens/s</td>
+          <td>3.4节</td>
+        </tr>
+        <tr>
+          <td>7</td><td><strong>幻觉率控制</strong></td>
+          <td>输出幻觉率 ≤ 0.8%（生成内容不在训练集或知识库覆盖范围内视为幻觉）</td>
+          <td>3.4节</td>
+        </tr>
+        <tr>
+          <td>8</td><td><strong>日文·韩文支持</strong></td>
+          <td>PRD要求支持 <strong>中文、英文、日文、韩文</strong> 共4种语言，PPT仅提及中英双语</td>
+          <td>3.4节</td>
+        </tr>
+        <tr>
+          <td>9</td><td><strong>模型能力边界声明</strong></td>
+          <td>禁用行为：不得主观判断用户情绪/紧急程度；不支持医疗诊断、法律建议等高风险回答</td>
+          <td>3.4节</td>
+        </tr>
+        <tr>
+          <td>10</td><td><strong>人工兜底机制</strong></td>
+          <td>置信度 &lt; 70% 或用户明确要求时自动转接人工坐席</td>
+          <td>3.5节</td>
+        </tr>
+        <tr>
+          <td>11</td><td><strong>举报与反馈闭环</strong></td>
+          <td>提供"举报错误回答"入口，用户反馈进入模型再训练闭环</td>
+          <td>3.5节 / 4.3节</td>
+        </tr>
+        <tr>
+          <td>12</td><td><strong>XAI可解释性</strong></td>
+          <td>提供可解释AI输出样例、展示模型调用链路与置信度分布热力图</td>
+          <td>3.5节</td>
+        </tr>
+        <tr>
+          <td>13</td><td><strong>公平性保障</strong></td>
+          <td>性别/年龄/地域维度预测偏差率差异 ≤ 5%，定期执行偏见检测并生成报告</td>
+          <td>3.5节</td>
+        </tr>
+        <tr>
+          <td>14</td><td><strong>7×24技术支持 / SLA</strong></td>
+          <td>提供7×24小时技术支持，SLA承诺服务可用性 ≥ 99.95%，故障响应 ≤ 15分钟</td>
+          <td>4.3节</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== 不符合 ===== -->
+  <div class="section">
+    <div class="section-title"><span class="icon">❌</span> 不符合需求文档要求的功能</div>
+    <div class="section-desc">以下功能在 PPT 中的描述与 PRD 要求存在实质性偏差或冲突。</div>
+    <table>
+      <thead>
+        <tr><th style="width:28px">#</th><th>功能名称</th><th>PPT中的描述</th><th>PRD中的要求</th><th style="width:220px">差异说明</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><strong>离线翻译</strong></td>
+          <td>P1 功能：<br>"在无网络环境下支持<strong>中英双语</strong>基础翻译能力"</td>
+          <td>PRD 3.4 节要求模型支持 <strong>中文、英文、日文、韩文</strong> 四种语言，且未提及"离线翻译"需求</td>
+          <td>
+            <span class="tag tag-red">偏差 ×2</span><br>
+            ① PRD 未要求离线翻译能力，PPT 擅自添加该功能<br>
+            ② PRD 要求涵盖日文、韩文，PPT 仅覆盖中英双语
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>"50万用户"<br>服务规模</strong></td>
+          <td>"预计可稳定服务<strong>50万用户</strong>规模"</td>
+          <td>PRD 3.3 节提及"内部历史对话记录（<strong>≥50万条</strong>）"是数据来源要求，非用户规模指标</td>
+          <td>
+            <span class="tag tag-orange">概念混淆</span><br>
+            PPT 将 PRD 中的训练数据量（50万条对话记录）误用作服务用户规模指标，PRD 中并无"50万用户"这一性能要求
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== Notes ===== -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📌</span> 补充说明与改进建议</div>
+    <ul class="note-list">
+      <li>
+        <span class="hl-yellow">关于「离线翻译」</span><br>
+        建议确认该功能是否为产品新增规划。若非 PRD 遗漏，应在 PPT 中移除或标注为"规划中/待定"；同时按 PRD 要求将多语言支持扩展至日文和韩文。
+      </li>
+      <li>
+        <span class="hl-yellow">关于「50万用户」指标</span><br>
+        PRD 中的 50 万是<strong>训练数据条目数</strong>，PPT 将其转述为服务用户规模，容易造成客户对系统承载能力的误解。建议修正为 PRD 明确规定的性能指标（≥1000 并发会话）。
+      </li>
+      <li>
+        <span class="hl-green">高优先级补充建议</span><br>
+        <strong>人工兜底机制</strong>（置信度 &lt; 70% 转人工）、<strong>模型性能指标</strong>（准确率 ≥ 92% / 召回率 ≥ 88%）、<strong>幻觉率 ≤ 0.8%</strong> — 这些是 AI 产品的核心信任指标，建议在 PPT 中补充展示，增强客户信心。
+      </li>
+      <li>
+        <span class="hl-green">中优先级补充建议</span><br>
+        <strong>平台/浏览器兼容性</strong>、<strong>移动端 SDK 支持</strong>（React Native + Flutter）— 影响产品部署范围与集成便利性，适合作为产品亮点展示。
+      </li>
+      <li>
+        <span class="hl-gray">锦上添花型建议</span><br>
+        <strong>XAI 可解释性</strong>、<strong>公平性保障</strong>、<strong>7×24 SLA 承诺</strong> — 可提升产品专业形象，适合在竞品对比或技术优势章节中补充。
+      </li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    本纪要由 AI 自动生成，基于产品介绍PPT与 PRD 文档内容对比分析 · 2026-07-03
+  </div>
+
+</div>
+
+
+</body></html>

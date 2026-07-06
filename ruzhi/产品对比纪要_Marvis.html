@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI产品功能对比纪要</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    background: #f5f6fa; color: #2d3436; line-height: 1.7; padding: 24px;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff; padding: 32px 40px; border-radius: 12px; margin-bottom: 24px;
+  }
+  .header h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+  .header .meta { font-size: 13px; opacity: 0.75; }
+  .header .meta span { margin-right: 24px; }
+  .summary-bar {
+    display: flex; gap: 16px; margin-bottom: 24px;
+  }
+  .summary-card {
+    flex: 1; border-radius: 10px; padding: 18px 20px; text-align: center;
+    font-weight: 600; color: #fff;
+  }
+  .summary-card .num { font-size: 32px; font-weight: 800; display: block; }
+  .summary-card .label { font-size: 13px; margin-top: 4px; opacity: 0.9; }
+  .card-green { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+  .card-orange { background: linear-gradient(135deg, #e67e22, #f39c12); }
+  .card-red { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+  .section {
+    background: #fff; border-radius: 12px; margin-bottom: 20px; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .section-header {
+    padding: 16px 24px; font-size: 18px; font-weight: 700;
+    display: flex; align-items: center; gap: 10px; color: #fff;
+  }
+  .section-header .icon { font-size: 20px; }
+  .header-green { background: #27ae60; }
+  .header-orange { background: #e67e22; }
+  .header-red { background: #c0392b; }
+  .section-body { padding: 20px 24px; }
+  .feature-list { list-style: none; }
+  .feature-list li {
+    padding: 10px 14px; margin-bottom: 8px; border-radius: 6px;
+    border-left: 4px solid; font-size: 14px;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .feature-list .tag {
+    flex-shrink: 0; font-size: 11px; font-weight: 700; padding: 2px 8px;
+    border-radius: 4px; color: #fff; white-space: nowrap;
+  }
+  .feature-list .text { flex: 1; }
+  .feature-list .ref { font-size: 12px; color: #999; margin-left: 4px; }
+  .li-green { background: #f0faf4; border-color: #27ae60; }
+  .li-green .tag { background: #27ae60; }
+  .li-orange { background: #fef9f0; border-color: #e67e22; }
+  .li-orange .tag { background: #e67e22; }
+  .li-red { background: #fef5f5; border-color: #c0392b; }
+  .li-red .tag { background: #c0392b; }
+  .subtitle { font-size: 13px; color: #666; margin: 14px 0 8px; font-weight: 600; }
+  hr { border: none; border-top: 1px solid #eee; margin: 12px 0; }
+  .footer { text-align: center; color: #999; font-size: 12px; margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>AI产品功能对比纪要</h1>
+  <div class="meta">
+    <span>基准文档：ai产品需求文档.pdf</span>
+    <span>对比文档：ai产品介绍.pptx</span>
+    <span>生成日期：2026-07-04</span>
+  </div>
+</div>
+
+<div class="summary-bar">
+  <div class="summary-card card-green">
+    <span class="num">13</span>
+    <span class="label">已实现功能</span>
+  </div>
+  <div class="summary-card card-orange">
+    <span class="num">24</span>
+    <span class="label">未实现功能</span>
+  </div>
+  <div class="summary-card card-red">
+    <span class="num">4</span>
+    <span class="label">不符合需求的功能</span>
+  </div>
+</div>
+
+<!-- 已实现功能 -->
+<div class="section">
+  <div class="section-header header-green">
+    <span class="icon">&#10004;</span> 已实现功能（PPT 中提到且符合需求文档要求）
+  </div>
+  <div class="section-body">
+    <ul class="feature-list">
+      <li class="li-green">
+        <span class="tag">产品定位</span>
+        <span class="text">面向电商、金融等行业企业客户，提供零代码配置的智能客服中台，以降本增效为核心价值 <span class="ref">(PRD §1.1 / PPT Slide 3)</span></span>
+      </li>
+      <li class="li-green">
+        <span class="tag">P0</span>
+        <span class="text"><b>多模态输入解析</b>：支持文本、语音、图像三种输入方式的自动识别与关键信息提取 <span class="ref">(PRD F001 / PPT Slide 4)</span></span>
+      </li>
+      <li class="li-green">
+        <span class="tag">P0</span>
+        <span class="text"><b>上下文关联与记忆</b>：单会话内支持最多12轮对话连贯性，避免用户重复提供背景信息 <span class="ref">(PRD F002 / PPT Slide 4)</span></span>
+      </li>
+      <li class="li-green">
+        <span class="tag">P0</span>
+        <span class="text"><b>意图识别与任务拆解</b>：准确判断用户诉求并分解为可执行的原子任务序列 <span class="ref">(PRD F003 / PPT Slide 4)</span></span>
+      </li>
+      <li class="li-green">
+        <span class="tag">P1</span>
+        <span class="text"><b>跨系统API调用</b>：安全对接订单、物流、账户等内部系统，实现数据查询与状态更新 <span class="ref">(PRD F004 / PPT Slide 4)</span></span>
+      </li>
+      <li class="li-green">
+        <span class="tag">P0</span>
+        <span class="text"><b>自然语言生成与响应</b>：将结构化结果转化为符合人类表达习惯的自然语言回复 <span class="ref">(PRD F005 / PPT Slide 4)</span></span>
+      </li>
+      <li class="li-green">
+        <span class="tag">用户</span>
+        <span class="text"><b>三类目标用户画像</b>：客服运营主管、IT系统管理员、终端消费者，痛点与期望描述一致 <span class="ref">(PRD §1.3 / PPT Slide 5)</span></span>
+      </li>
+      <li class="li-green">
+        <span class="tag">场景</span>
+        <span class="text"><b>典型使用场景覆盖</b>：订单状态查询、退款进度跟踪、收货地址修改、账户信息核验、多轮连续咨询 <span class="ref">(PRD §1.4 / PPT Slide 7)</span></span>
+      </li>
+      <li class="li-green">
+        <span class="tag">性能</span>
+        <span class="text"><b>响应延迟 P99 ≤ 1.4 秒</b>，与需求文档一致 <span class="ref">(PRD §3.1 / PPT Slide 8)</span></span>
+      </li>
+      <li class="li-green">
+        <span class="tag">性能</span>
+        <span class="text"><b>并发能力 ≥ 1000</b> 个并发会话，满足企业级 SLA 要求 <span class="ref">(PRD §3.1 / PPT Slide 8)</span></span>
+      </li>
+      <li class="li-green">
+        <span class="tag">安全</span>
+        <span class="text"><b>RBAC 权限控制</b>：基于角色的访问控制模型，未登录用户无法查看敏感信息 <span class="ref">(PRD §3.2 / PPT Slide 9)</span></span>
+      </li>
+      <li class="li-green">
+        <span class="tag">安全</span>
+        <span class="text"><b>操作日志审计</b>：所有 API 调用与配置变更记录操作人、时间戳及变更内容，日志保留不少于 180 天 <span class="ref">(PRD §3.2 / PPT Slide 9)</span></span>
+      </li>
+      <li class="li-green">
+        <span class="tag">合规</span>
+        <span class="text"><b>法规合规认证</b>：遵循 GDPR 第 32 条，通过等保二级测评 <span class="ref">(PRD §3.2 / PPT Slide 9)</span></span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- 未实现功能 -->
+<div class="section">
+  <div class="section-header header-orange">
+    <span class="icon">&#9888;</span> 未实现功能（需求文档中有但 PPT 中未提及）
+  </div>
+  <div class="section-body">
+
+    <div class="subtitle">一、业务目标与运营能力</div>
+    <ul class="feature-list">
+      <li class="li-orange">
+        <span class="tag">业务目标</span>
+        <span class="text">量化业务指标缺失：上线6个月内工单首次响应时长缩短 40%，人工介入率下降至 20% 以下 <span class="ref">(PRD §1.2)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">运营工具</span>
+        <span class="text"><b>可视化流程编排界面</b>：运营人员期望通过可视化界面快速配置新业务场景，PPT 中未提及此能力 <span class="ref">(PRD §1.2 用户目标)</span></span>
+      </li>
+    </ul>
+
+    <div class="subtitle">二、功能细节与异常处理</div>
+    <ul class="feature-list">
+      <li class="li-orange">
+        <span class="tag">F001细节</span>
+        <span class="text">语音转写准确率目标 ≥ 95% 未体现 <span class="ref">(PRD F001)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">F001细节</span>
+        <span class="text">图像格式限制（仅支持 JPG/PNG，分辨率 ≥ 720p）未说明 <span class="ref">(PRD F001)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">F001异常</span>
+        <span class="text">OCR 失败时启用人工审核队列的异常处理未提及 <span class="ref">(PRD F001)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">F002细节</span>
+        <span class="text">敏感信息（如身份证号）不在记忆范围内的规则未说明 <span class="ref">(PRD F002)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">F002异常</span>
+        <span class="text">上下文冲突时以最新一轮输入为准、记忆超限提示机制未提及 <span class="ref">(PRD F002)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">F003指标</span>
+        <span class="text">一级意图分类准确率 ≥ 92% 的量化指标未体现 <span class="ref">(PRD F003)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">F003异常</span>
+        <span class="text">无法识别意图时引导用户选择预设问题模板的兜底策略未提及 <span class="ref">(PRD F003)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">F004细节</span>
+        <span class="text">API 超时阈值 2 秒及降级策略（缓存数据或规则引擎兜底）未说明 <span class="ref">(PRD F004)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">F005指标</span>
+        <span class="text">幻觉率 ≤ 0.8% 的质量指标未体现 <span class="ref">(PRD F005)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">F005规范</span>
+        <span class="text">品牌语调规范（"专业但不失亲和"）未提及 <span class="ref">(PRD F005)</span></span>
+      </li>
+    </ul>
+
+    <div class="subtitle">三、非功能需求 — 性能与兼容性</div>
+    <ul class="feature-list">
+      <li class="li-orange">
+        <span class="tag">兼容性</span>
+        <span class="text"><b>平台兼容性详情</b>：iOS 12+/Android 8.0+/Windows 10+/macOS 10.15+；浏览器 Chrome 90+/Safari 14+/Firefox 85+/Edge 90+；ReactNative 与 Flutter SDK 均未提及 <span class="ref">(PRD §3.1)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">网络</span>
+        <span class="text">4G 弱网环境（RTT ≥ 300ms）下核心功能降级可用未提及 <span class="ref">(PRD §3.1)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">安全</span>
+        <span class="text">HTTPS 传输加密 TLS ≥ 1.2 的具体要求未体现 <span class="ref">(PRD §3.2)</span></span>
+      </li>
+    </ul>
+
+    <div class="subtitle">四、数据管理与模型能力</div>
+    <ul class="feature-list">
+      <li class="li-orange">
+        <span class="tag">数据</span>
+        <span class="text"><b>数据管理规范</b>：内部历史对话 ≥ 50万条、数据清洗标准、标注一致性 Kappa ≥ 0.8、数据不出境等整套规范未提及 <span class="ref">(PRD §3.3)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">模型</span>
+        <span class="text">关键业务场景意图识别召回率 ≥ 88% 未提及 <span class="ref">(PRD §3.4)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">模型</span>
+        <span class="text">模型推理速度 ≥ 80 tokens/秒（A100 GPU 环境）未提及 <span class="ref">(PRD §3.4)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">接口</span>
+        <span class="text">输入字段 Schema（user_input / session_id / user_profile）和输出 Schema 定义未体现 <span class="ref">(PRD §3.4)</span></span>
+      </li>
+    </ul>
+
+    <div class="subtitle">五、伦理合规与运维保障</div>
+    <ul class="feature-list">
+      <li class="li-orange">
+        <span class="tag">伦理</span>
+        <span class="text"><b>公平性保障</b>：性别/年龄/地域维度预测偏差率 ≤ 5% 的公平性要求及定期偏见检测未提及 <span class="ref">(PRD §3.5)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">合规</span>
+        <span class="text">遵循《生成式人工智能服务管理暂行办法》第七条内容安全要求未提及 <span class="ref">(PRD §3.5)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">兜底</span>
+        <span class="text"><b>人工兜底机制</b>：置信度 &lt; 70% 或用户明确要求时自动转接人工坐席、举报错误回答入口未提及 <span class="ref">(PRD §3.5)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">可解释</span>
+        <span class="text">XAI 可解释 AI 输出样例及管理后台模型调用链路展示未提及 <span class="ref">(PRD §3.5)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">实施</span>
+        <span class="text"><b>实施计划与里程碑</b>（5 阶段敏捷开发、灰度发布策略）均未提及 <span class="ref">(PRD §4.1)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">测试</span>
+        <span class="text">测试与验证策略（单元/集成/压力/回归测试、Given-When-Then 验收标准）未提及 <span class="ref">(PRD §4.2)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">运维</span>
+        <span class="text">模型监控与再训练机制（漂移检测、反馈闭环、月度/季度版本迭代）、7×24 技术支持 SLA ≥ 99.95% 未提及 <span class="ref">(PRD §4.3)</span></span>
+      </li>
+      <li class="li-orange">
+        <span class="tag">禁用</span>
+        <span class="text">模型禁用行为：不得主观判断用户情绪/紧急程度、不支持医疗诊断/法律建议等高风险领域 <span class="ref">(PRD §3.4)</span></span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- 不符合需求的功能 -->
+<div class="section">
+  <div class="section-header header-red">
+    <span class="icon">&#10008;</span> 不符合需求文档要求的功能
+  </div>
+  <div class="section-body">
+    <ul class="feature-list">
+      <li class="li-red">
+        <span class="tag">多余功能</span>
+        <span class="text"><b>「离线翻译」功能（P1）</b>：PPT Slide 4 中列出的"无网络环境下中英双语基础翻译"在需求文档中完全没有出现，属于 PPT 额外新增的未定义功能 <span class="ref">(PPT Slide 4 vs PRD §2.1)</span></span>
+      </li>
+      <li class="li-red">
+        <span class="tag">参数冲突</span>
+        <span class="text"><b>上下文窗口大小不一致</b>：PPT Slide 6 技术架构中标注为"128K 上下文窗口"，但需求文档 §3.4 明确写为"12轮历史记忆（约 16K tokens）"。两者差异巨大（128K vs 16K），属于严重参数偏差 <span class="ref">(PPT Slide 6 vs PRD §3.4)</span></span>
+      </li>
+      <li class="li-red">
+        <span class="tag">脱敏格式错误</span>
+        <span class="text"><b>PII 脱敏格式不符</b>：PPT Slide 9 展示脱敏示例为"1381234"（仅显示前7位），但需求文档 §3.2 要求为"138****1234"（中间四位星号掩码）。当前脱敏格式过于简化，可能导致敏感信息泄露 <span class="ref">(PPT Slide 9 vs PRD §3.2)</span></span>
+      </li>
+      <li class="li-red">
+        <span class="tag">语言能力缩减</span>
+        <span class="text"><b>多语言支持范围缩小</b>：PPT 仅提"中英双语"翻译能力，而需求文档 §3.4 明确要求支持"中文、英文、日文、韩文"四种语言。日文和韩文支持在 PPT 中完全缺失 <span class="ref">(PPT Slide 4 vs PRD §3.4)</span></span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">
+  本纪要由 AI 自动生成，基于 ai产品需求文档.pdf 与 ai产品介绍.pptx 逐项对比完成 &nbsp;|&nbsp; 2026-07-04
+</div>
+
+</div>
+</body>
+</html>
